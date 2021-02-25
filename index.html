@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vue</title>
+
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{titulo}}</h1>
+			<h2>Mi saldo disponible es: {{cantidad}}</h2>
+			<a :href="enlace">ir al enlace</a>
+
+			<hr />
+
+			<h2 v-if="estado">Cuenta activa</h2>
+			<h2 v-else>Cuenta desactivada</h2>
+
+			<hr />
+
+			<h2 v-if="cantidad > 500">Cantidad: {{cantidad}}</h2>
+			<h2 v-else-if="cantidad <= 5000 && cantidad > 0">
+				Cantidad:
+				<span style="color: red"> {{cantidad}} </span>
+			</h2>
+			<h2 v-else>Sin cantidad {{cantidad}}</h2>
+
+			<hr />
+
+			<ul>
+				<li v-for="(item, x) in servicios" :key="x">{{x+1}}-{{item}}</li>
+			</ul>
+
+			<hr />
+
+			<button @click="agregarSaldo">Agregar saldo</button>
+		</div>
+
+		<script src="main.js"></script>
+		<script>
+			const mountedApp = app.mount("#app");
+		</script>
+	</body>
+</html>
